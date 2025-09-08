@@ -1,243 +1,317 @@
+import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    subject: "",
     message: ""
   });
-  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate form submission
-    toast({
-      title: "Mensagem Enviada!",
-      description: "Obrigado pelo seu contacto. Responderemos em breve.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
-
-  const handleWhatsAppContact = () => {
-    const message = "Olá! Gostaria de entrar em contacto com a LojaRápida MZ.";
-    const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
-
-  const contactInfo = [
-    {
-      icon: <Phone className="h-6 w-6 text-primary" />,
-      title: "Telefone",
-      details: ["+258 84 123 4567", "+258 87 654 3210"],
-      description: "Ligue para nós durante o horário comercial"
-    },
-    {
-      icon: <Mail className="h-6 w-6 text-secondary" />,
-      title: "E-mail",
-      details: ["info@lojarapida.mz", "suporte@lojarapida.mz"],
-      description: "Envie-nos um e-mail a qualquer momento"
-    },
-    {
-      icon: <MapPin className="h-6 w-6 text-primary" />,
-      title: "Localizações",
-      details: ["Maputo", "Beira", "Matola"],
-      description: "Áreas de entrega gratuita"
-    },
-    {
-      icon: <Clock className="h-6 w-6 text-secondary" />,
-      title: "Horário",
-      details: ["Segunda - Sexta: 8h - 18h", "Sábado: 8h - 14h"],
-      description: "Horário de atendimento"
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive"
+      });
+      return;
     }
-  ];
+
+    setIsLoading(true);
+
+    try {
+      // Create email content
+      const emailContent = `Nova mensagem de contato - LojaRápida MZ
+
+Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone || 'Não informado'}
+Assunto: ${formData.subject || 'Contato geral'}
+
+Mensagem:
+${formData.message}
+
+Data: ${new Date().toLocaleString('pt-MZ')}
+Origem: Website LojaRápida MZ`;
+
+      const mailtoLink = `mailto:vijaronaa@gmail.com?subject=Contato LojaRápida MZ - ${formData.subject || 'Nova mensagem'}&body=${encodeURIComponent(emailContent)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+
+      toast({
+        title: "✅ Sua mensagem foi enviada com sucesso!",
+        description: "Entraremos em contato em breve. Obrigado pelo interesse na LojaRápida MZ!",
+      });
+
+      // Clear form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
+      });
+      
+    } catch (error) {
+      toast({
+        title: "Erro no envio",
+        description: "Tente novamente mais tarde ou entre em contato via WhatsApp.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <section className="text-center mb-16 animate-slide-up">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Entre em <span className="text-primary">Contacto</span>
+      <main className="container mx-auto px-4 py-8">
+        {/* Page Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Fale Conosco
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Estamos aqui para ajudar! Entre em contacto connosco através de qualquer 
-            um dos canais abaixo.
+          <p className="text-lg text-muted-foreground">
+            Estamos aqui para ajudar! Entre em contato conosco
           </p>
-        </section>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Contact Form */}
-          <Card className="p-8 animate-slide-up">
-            <h2 className="text-2xl font-bold text-foreground mb-6">
-              Envie-nos uma Mensagem
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Nome Completo *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                  placeholder="Seu nome completo"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  E-mail *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                  placeholder="seu.email@exemplo.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Telefone
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                  placeholder="+258 XX XXX XXXX"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Mensagem *
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none"
-                  placeholder="Como podemos ajudá-lo?"
-                />
-              </div>
-              
-              <Button type="submit" className="w-full bg-gradient-to-r from-primary to-primary-glow">
-                Enviar Mensagem
-              </Button>
-            </form>
-          </Card>
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-8 mb-8">
-              <h2 className="text-2xl font-bold text-foreground mb-4">
-                Contacto Rápido via WhatsApp
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-semibold text-foreground mb-6">
+                Informações de Contato
               </h2>
-              <p className="text-muted-foreground mb-6">
-                Para um atendimento mais rápido, contacte-nos directamente via WhatsApp. 
-                Responderemos em poucos minutos!
-              </p>
-              <Button 
-                onClick={handleWhatsAppContact}
-                className="bg-green-500 hover:bg-green-600 text-white"
-                size="lg"
-              >
-                <MessageCircle className="h-5 w-5 mr-2" />
-                Contactar via WhatsApp
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300">
+              
+              <div className="space-y-6">
+                <Card className="p-6 hover:shadow-lg transition-shadow">
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      {info.icon}
+                    <div className="bg-primary/10 p-3 rounded-lg">
+                      <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-2">
-                        {info.title}
-                      </h3>
-                      <div className="space-y-1 mb-2">
-                        {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-foreground font-medium">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {info.description}
-                      </p>
+                      <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
+                      <p className="text-muted-foreground">+258 84 123 4567</p>
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto text-primary"
+                        onClick={() => {
+                          const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
+                          const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                          window.open(url, "_blank");
+                        }}
+                      >
+                        Enviar mensagem
+                      </Button>
                     </div>
                   </div>
                 </Card>
-              ))}
+
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-primary/10 p-3 rounded-lg">
+                      <Mail className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                      <p className="text-muted-foreground">vijaronaa@gmail.com</p>
+                      <p className="text-sm text-muted-foreground">Respondemos em até 24 horas</p>
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-primary/10 p-3 rounded-lg">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Atendimento</h3>
+                      <p className="text-muted-foreground">Maputo, Beira e Matola</p>
+                      <p className="text-sm text-muted-foreground">Entrega grátis para estas cidades</p>
+                    </div>
+                  </div>
+                </Card>
+
+                <Card className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-primary/10 p-3 rounded-lg">
+                      <Clock className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">Horário de Atendimento</h3>
+                      <p className="text-muted-foreground">Segunda a Sexta: 8h às 18h</p>
+                      <p className="text-muted-foreground">Sábado: 8h às 12h</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
             </div>
+
+            {/* Trust Badges */}
+            <Card className="p-6 bg-accent/30 border-primary/20">
+              <h3 className="font-semibold text-foreground mb-4">Por que escolher a LojaRápida MZ?</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Entrega grátis para Maputo, Beira e Matola</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Pagamento na entrega</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Produtos de qualidade garantida</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span className="text-sm text-muted-foreground">Suporte via WhatsApp</span>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Contact Form */}
+          <div>
+            <Card className="p-8">
+              <h2 className="text-2xl font-semibold text-foreground mb-6">
+                Envie sua Mensagem
+              </h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Nome *
+                    </label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Seu nome completo"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Email *
+                    </label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="seu@email.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Telefone
+                    </label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+258 ..."
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Assunto
+                    </label>
+                    <Input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="Sobre o que deseja falar?"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Mensagem *
+                  </label>
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Escreva sua mensagem aqui..."
+                    rows={6}
+                    required
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Enviando..." : "Enviar Mensagem"}
+                </Button>
+
+                <p className="text-xs text-muted-foreground text-center">
+                  Ao enviar, você será redirecionado para seu cliente de email
+                </p>
+              </form>
+            </Card>
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <section className="bg-muted rounded-2xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-            Perguntas Frequentes
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">
-                Como funciona a entrega?
-              </h3>
-              <p className="text-muted-foreground">
-                Fazemos entrega gratuita em Maputo, Beira e Matola em 24-48h. 
-                Você será contactado para confirmar o endereço e horário.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">
-                Posso pagar na entrega?
-              </h3>
-              <p className="text-muted-foreground">
-                Sim! Aceitamos pagamento na entrega em dinheiro. Só pague quando 
-                receber o produto em perfeitas condições.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">
-                E se eu não gostar do produto?
-              </h3>
-              <p className="text-muted-foreground">
-                Oferecemos garantia de satisfação. Se não gostar, pode devolver 
-                o produto em até 7 dias em perfeitas condições.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">
-                Como acompanhar meu pedido?
-              </h3>
-              <p className="text-muted-foreground">
-                Após o pedido, enviaremos atualizações via WhatsApp sobre o 
-                status da sua encomenda até a entrega.
-              </p>
-            </div>
-          </div>
-        </section>
+        {/* Quick Contact */}
+        <div className="text-center mt-16">
+          <Card className="max-w-md mx-auto p-6 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+            <h3 className="font-semibold text-foreground mb-3">Precisa de ajuda rápida?</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Fale conosco diretamente no WhatsApp para atendimento imediato
+            </p>
+            <Button 
+              className="bg-green-500 hover:bg-green-600 text-white"
+              onClick={() => {
+                const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
+                const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+              }}
+            >
+              <Phone className="h-4 w-4 mr-2" />
+              Falar no WhatsApp
+            </Button>
+          </Card>
+        </div>
       </main>
 
       <Footer />

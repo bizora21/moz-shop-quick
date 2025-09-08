@@ -42,10 +42,23 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg transition-all duration-300">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg transition-all duration-300"
+                onClick={() => window.location.href = '/produtos'}
+              >
                 Ver Produtos
               </Button>
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-primary text-primary hover:bg-primary hover:text-white"
+                onClick={() => {
+                  const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
+                  const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                  window.open(url, "_blank");
+                }}
+              >
                 Contactar Agora
               </Button>
             </div>

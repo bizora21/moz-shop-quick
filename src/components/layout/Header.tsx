@@ -33,14 +33,15 @@ const Header = () => {
             <a href="/produtos" className="text-foreground hover:text-primary transition-colors">Produtos</a>
             <a href="/sobre" className="text-foreground hover:text-primary transition-colors">Sobre</a>
             <a href="/contato" className="text-foreground hover:text-primary transition-colors">Contato</a>
+            <a href="/carrinho" className="text-foreground hover:text-primary transition-colors">Carrinho</a>
           </nav>
 
           {/* Cart and User Actions */}
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="icon" className="relative">
+            <Button variant="ghost" size="icon" className="relative" onClick={() => window.location.href = '/carrinho'}>
               <ShoppingCart className="h-5 w-5" />
               <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
+                1
               </span>
             </Button>
             
@@ -80,6 +81,7 @@ const Header = () => {
               <a href="/produtos" className="text-foreground hover:text-primary transition-colors py-2">Produtos</a>
               <a href="/sobre" className="text-foreground hover:text-primary transition-colors py-2">Sobre</a>
               <a href="/contato" className="text-foreground hover:text-primary transition-colors py-2">Contato</a>
+              <a href="/carrinho" className="text-foreground hover:text-primary transition-colors py-2">Carrinho</a>
             </div>
           </nav>
         )}

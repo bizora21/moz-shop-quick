@@ -3,6 +3,8 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
+import Testimonials from "@/components/sections/Testimonials";
+import Newsletter from "@/components/sections/Newsletter";
 
 const Index = () => {
   return (
@@ -11,6 +13,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <FeaturedProducts />
+        <Testimonials />
+        <Newsletter />
       </main>
       <Footer />
       <WhatsAppButton />

@@ -58,8 +58,9 @@ const FeaturedProducts = () => {
           {products.map((product, index) => (
             <Card 
               key={product.id} 
-              className="group hover:shadow-xl transition-all duration-300 overflow-hidden animate-slide-up"
+              className="group hover:shadow-xl transition-all duration-300 overflow-hidden animate-slide-up cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => window.location.href = `/produto/${product.id}`}
             >
               <div className="relative">
                 <img 
@@ -111,11 +112,26 @@ const FeaturedProducts = () => {
 
                 {/* Actions */}
                 <div className="space-y-2">
-                  <Button className="w-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-primary to-primary-glow hover:shadow-lg"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const message = `Olá! Gostaria de comprar: ${product.name} - ${product.price} MT. Pode me ajudar?`;
+                      const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                      window.open(url, "_blank");
+                    }}
+                  >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Comprar Agora
                   </Button>
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-white"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.location.href = `/produto/${product.id}`;
+                    }}
+                  >
                     Ver Detalhes
                   </Button>
                 </div>
@@ -130,6 +146,7 @@ const FeaturedProducts = () => {
             size="lg" 
             variant="outline"
             className="border-primary text-primary hover:bg-primary hover:text-white"
+            onClick={() => window.location.href = '/produtos'}
           >
             Ver Todos os Produtos
           </Button>

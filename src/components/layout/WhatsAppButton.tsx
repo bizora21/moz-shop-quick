@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const WhatsAppButton = () => {
   const whatsappNumber = "+258841234567";
-  const message = "Olá! Gostaria de saber mais sobre os produtos da LojaRápida MZ.";
+  const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
 
   const handleWhatsAppClick = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
