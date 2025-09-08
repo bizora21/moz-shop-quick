@@ -2,11 +2,10 @@
   "name": "moz-shop-quick",
   "version": "1.0.0",
   "scripts": {
-    "dev": "bun run dev",
-    "build": "bun run build",
-    "start": "bun run preview"
-  }
-}
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
