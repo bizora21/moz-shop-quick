@@ -6,7 +6,9 @@ export default defineConfig({
   server: {
     port: 8080
   },
-  plugins: [react()],
+  plugins: [react({
+    jsxImportSource: "react"
+  })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -14,6 +16,9 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ["lovable-tagger"]
+  },
+  esbuild: {
+    jsx: "automatic"
   },
   build: {
     target: "esnext"
