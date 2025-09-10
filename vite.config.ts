@@ -15,12 +15,19 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ["lovable-tagger"]
+    exclude: ["lovable-tagger"]
   },
   esbuild: {
-    jsx: "automatic"
+    jsx: "automatic",
+    jsxFactory: "React.createElement",
+    jsxFragment: "React.Fragment"
   },
   build: {
-    target: "esnext"
+    target: "esnext",
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 });

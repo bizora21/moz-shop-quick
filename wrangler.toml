@@ -1,0 +1,10 @@
+[build]
+command = "npm run build"
+cwd = "."
+[build.environment_variables]
+NODE_VERSION = "18"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
