@@ -117,13 +117,13 @@ Origem: Website LojaRápida MZ`;
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">WhatsApp</h3>
-                      <p className="text-muted-foreground">+258 84 123 4567</p>
+                      <p className="text-muted-foreground">+258 86 318 1415</p>
                       <Button 
                         variant="link" 
                         className="p-0 h-auto text-primary"
                         onClick={() => {
                           const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
-                          const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                          const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
                           window.open(url, "_blank");
                         }}
                       >
@@ -303,7 +303,7 @@ Origem: Website LojaRápida MZ`;
               className="bg-green-500 hover:bg-green-600 text-white"
               onClick={() => {
                 const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
-                const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
                 window.open(url, "_blank");
               }}
             >

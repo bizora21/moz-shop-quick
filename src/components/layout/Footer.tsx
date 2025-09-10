@@ -31,7 +31,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+258 84 123 4567</span>
+                <span>+258 86 318 1415</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="h-4 w-4" />
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 LojaRápida MZ. Todos os direitos reservados.</p>
+          <p>&copy; 2025 LojaRápida MZ. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

@@ -55,7 +55,7 @@ const HeroSection = () => {
                 className="border-primary text-primary hover:bg-primary hover:text-white"
                 onClick={() => {
                   const message = "Olá, tenho interesse em um produto da LojaRápida MZ. Pode me ajudar?";
-                  const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                  const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
                   window.open(url, "_blank");
                 }}
               >

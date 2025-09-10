@@ -1,8 +1,10 @@
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -12,3 +14,18 @@ Allow: /
 
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://lojarapida.mz/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /api/
+
+# Allow important pages for Mozambique
+Allow: /produtos
+Allow: /sobre
+Allow: /contato
+Allow: /blog

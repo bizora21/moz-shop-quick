@@ -87,7 +87,7 @@ Cidade: ${customerInfo.city}
 
 Obrigado por escolher a LojaRápida MZ!`;
 
-    const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 
     toast({

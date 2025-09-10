@@ -117,7 +117,7 @@ const FeaturedProducts = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       const message = `Olá! Gostaria de comprar: ${product.name} - ${product.price} MT. Pode me ajudar?`;
-                      const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+                      const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
                       window.open(url, "_blank");
                     }}
                   >

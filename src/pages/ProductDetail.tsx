@@ -128,7 +128,7 @@ const ProductDetail = () => {
 
   const handleBuyNow = () => {
     const message = `Olá! Gostaria de comprar: ${product.name} - ${product.price} MT. Pode me ajudar com o processo de compra?`;
-    const url = `https://wa.me/+258841234567?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/+258863181415?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 

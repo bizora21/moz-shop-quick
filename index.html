@@ -1,11 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-MZ">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10b981" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="geo.region" content="MZ" />
+    <meta name="geo.country" content="Mozambique" />
+    <meta name="geo.placename" content="Maputo" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts with display swap for performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
     <title>LojaRápida MZ - Produtos de Qualidade para Casa | Entrega Grátis</title>
     <meta name="description" content="Loja online em Moçambique com utensílios domésticos de qualidade. Pague na entrega. Entrega grátis para Maputo, Beira e Matola. Cortadores, amassadores e muito mais!" />
-    <meta name="keywords" content="loja online moçambique, utensílios domésticos, cortador legumes, entrega grátis maputo, pague na entrega" />
+    <meta name="keywords" content="loja online moçambique, utensílios domésticos, cortador legumes, entrega grátis maputo, pague na entrega, loja online maputo, produtos casa mozambique" />
     <meta name="author" content="LojaRápida MZ" />
     <link rel="canonical" href="https://lojarapida.mz" />
 
@@ -25,20 +39,44 @@
     <meta name="twitter:description" content="Utensílios domésticos modernos com entrega grátis em Maputo, Beira e Matola." />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data - Enhanced for E-commerce -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "Store",
       "name": "LojaRápida MZ",
+      "description": "Loja online em Moçambique com utensílios domésticos de qualidade",
       "url": "https://lojarapida.mz",
       "logo": "https://lojarapida.mz/logo.png",
+      "image": "https://lovable.dev/opengraph-image-p98pqg.png",
+      "telephone": "+258-86-318-1415",
+      "email": "info@lojarapida.mz",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "MZ",
+        "addressRegion": "Maputo",
+        "addressLocality": "Maputo"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-25.966375",
+        "longitude": "32.583444"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "paymentAccepted": ["Cash", "Credit Card"],
+      "currenciesAccepted": "MZN",
+      "areaServed": ["Maputo", "Beira", "Matola"],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+258-86-318-1415",
         "contactType": "customer service",
         "areaServed": "MZ",
-        "availableLanguage": "Portuguese"
+        "availableLanguage": ["Portuguese"]
       },
       "sameAs": [
         "https://facebook.com/lojarapidamz",
@@ -46,6 +84,26 @@
       ]
     }
     </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        page_title: 'LojaRápida MZ',
+        page_location: window.location.href,
+        custom_map: {'custom_parameter_1': 'mozambique_ecommerce'}
+      });
+    </script>
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
 
   <body>
