@@ -1,16 +1,19 @@
 import { ReactNode } from 'react'
 import { Navigate } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
 
 interface ProtectedRouteProps {
   children: ReactNode
 }
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  // Simplified for now - just redirect to login
-  // TODO: Implement proper auth checking when Supabase is configured
-  const isAuthenticated = false // Temporarily disabled until Supabase is properly configured
+  const { user, loading } = useAuth()
 
-  if (!isAuthenticated) {
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Carregando...</div>
+  }
+
+  if (!user) {
     return <Navigate to="/login" replace />
   }
 
