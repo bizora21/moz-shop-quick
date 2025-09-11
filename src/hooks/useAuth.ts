@@ -7,9 +7,12 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Get initial user
+    // Get initial user with error handling
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user)
+      setLoading(false)
+    }).catch((error) => {
+      console.warn('Auth error:', error)
       setLoading(false)
     })
 
