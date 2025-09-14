@@ -1,51 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Página Principal -->
   <url>
     <loc>https://lojarapida.mz/</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lojarapida.mz/hero-products.jpg</image:loc>
+      <image:title>LojaRápida MZ - E-commerce em Moçambique</image:title>
+      <image:caption>Produtos de qualidade com entrega rápida em Moçambique</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Produtos -->
   <url>
     <loc>https://lojarapida.mz/produtos</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+  
+  <!-- Sobre -->
   <url>
     <loc>https://lojarapida.mz/sobre</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+  <!-- Contato -->
   <url>
     <loc>https://lojarapida.mz/contato</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Blog -->
   <url>
     <loc>https://lojarapida.mz/blog</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <!-- Carrinho -->
   <url>
     <loc>https://lojarapida.mz/carrinho</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>always</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Login -->
   <url>
     <loc>https://lojarapida.mz/login</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  <!-- Cadastro -->
   <url>
     <loc>https://lojarapida.mz/cadastro</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  <!-- Dashboard -->
+  <url>
+    <loc>https://lojarapida.mz/dashboard</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Páginas de Categorias Específicas para Moçambique -->
+  <url>
+    <loc>https://lojarapida.mz/produtos/eletronicos</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lojarapida.mz/produtos/casa-jardim</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://lojarapida.mz/produtos/moda</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Páginas de Serviços para Moçambique -->
+  <url>
+    <loc>https://lojarapida.mz/entrega-maputo</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lojarapida.mz/entrega-matola</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://lojarapida.mz/entrega-beira</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
 </urlset>

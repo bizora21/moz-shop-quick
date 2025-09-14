@@ -1,53 +1,80 @@
 {
-  "name": "LojaRápida MZ - Loja Online Moçambique",
+  "name": "LojaRápida MZ - E-commerce em Moçambique",
   "short_name": "LojaRápida MZ",
-  "description": "Loja online em Moçambique com utensílios domésticos de qualidade. Entrega grátis para Maputo, Beira e Matola.",
+  "description": "Loja online líder em Moçambique com produtos de qualidade, entrega rápida e atendimento via WhatsApp. Compre com segurança!",
   "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#10b981",
-  "background_color": "#ffffff",
-  "lang": "pt-MZ",
   "scope": "/",
-  "icons": [
-    {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32x32.png", 
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "categories": ["shopping", "business", "lifestyle"],
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",  
+  "lang": "pt-MZ",
+  "categories": ["shopping", "business", "productivity"],
   "screenshots": [
     {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x720",
+      "src": "/hero-products.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Produtos em destaque na LojaRápida MZ"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
       "type": "image/png",
-      "form_factor": "wide"
+      "purpose": "any maskable"
     },
     {
-      "src": "/screenshot-mobile.png", 
-      "sizes": "375x667",
+      "src": "/favicon-32x32.png",
+      "sizes": "192x192", 
       "type": "image/png",
-      "form_factor": "narrow"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Produtos",
+      "short_name": "Produtos",
+      "description": "Navegar pelos produtos disponíveis",
+      "url": "/produtos",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "WhatsApp",
+      "short_name": "WhatsApp", 
+      "description": "Contactar via WhatsApp",
+      "url": "https://wa.me/258863181415",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Carrinho",
+      "short_name": "Carrinho",
+      "description": "Ver carrinho de compras",
+      "url": "/carrinho",
+      "icons": [
+        {
+          "src": "/favicon-32x32.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

@@ -1,31 +1,97 @@
+# Robots.txt otimizado para LojaRápida MZ - E-commerce Moçambicano
+# Última atualização: 2025-01-14
+
+# Google Crawler - Prioridade máxima
 User-agent: Googlebot
 Allow: /
+Allow: /produtos
+Allow: /sobre
+Allow: /contato
+Allow: /blog
+Allow: /carrinho
 Crawl-delay: 1
 
+# Bing Crawler
 User-agent: Bingbot
 Allow: /
+Allow: /produtos
+Allow: /sobre
+Allow: /contato
+Allow: /blog
 Crawl-delay: 1
 
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: WhatsApp
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Crawlers específicos para e-commerce
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Outros crawlers
 User-agent: *
 Allow: /
+Allow: /produtos
+Allow: /sobre
+Allow: /contato
+Allow: /blog
+Allow: /carrinho
 Crawl-delay: 2
 
 # Sitemap location
 Sitemap: https://lojarapida.mz/sitemap.xml
 
-# Disallow admin areas
+# Bloquear áreas administrativas e de desenvolvimento
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /api/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /cadastro
+Disallow: /esqueci-senha
+Disallow: /reset-password
+Disallow: /.well-known/
+Disallow: /tmp/
+Disallow: /cache/
 
-# Allow important pages for Mozambique
-Allow: /produtos
-Allow: /sobre
-Allow: /contato
-Allow: /blog
+# Permitir recursos importantes para SEO
+Allow: /favicon-32x32.png
+Allow: /manifest.json
+Allow: /sw.js
+Allow: /hero-products.jpg
+Allow: /product-*.jpg
+
+# Otimizações para Moçambique
+# Permitir páginas importantes para market local
+Allow: /entrega-maputo
+Allow: /entrega-matola  
+Allow: /entrega-beira
+Allow: /produtos/eletronicos
+Allow: /produtos/casa-jardim
+Allow: /produtos/moda
+
+# Configurações específicas para crawlers móveis
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
